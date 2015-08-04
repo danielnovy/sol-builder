@@ -72,12 +72,11 @@ var SolBuilder = (function() {
 
     function _buildMapping(item) {
         var result = _buildComment(item);
-        result += 'mapping ';
+        result += 'mapping (' + item.keyType + ' => ' + item.valueType + ') ';
         if (item.modifier) {
             result += item.modifier + ' ';
         }
-        result += ' (' + item.keyType + ' => ' + item.valueType
-            + ') ' + item.name + ';';
+        result += item.name + ';';
         return _lineBreak(item, result);
     }
 
