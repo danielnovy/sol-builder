@@ -1,0 +1,14 @@
+{
+  "name": "sol-builder",
+  "description": "A solidity contract builder for Ethereum platform",
+  "version": "0.0.1",
+  "main": "sol-builder.js",
+  "scripts": {"test": "nodejs test/all.js"},
+  "dependencies": {
+    "js-beautify": ">= 1.0.0"
+  },
+  "devDependencies": {
+    "js-beautify": ">= 1.0.0",
+    "test": ">= 0.0.5"
+  }
+}
