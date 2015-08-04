@@ -1,4 +1,4 @@
-var builder = require('./app/sol-builder.js');
+var builder = require('sol-builder');
 
 builder.setName('MyContract');
 builder.is('ParentContract');

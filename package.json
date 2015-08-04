@@ -1,9 +1,15 @@
 {
   "name": "sol-builder",
   "description": "A solidity contract builder for Ethereum platform",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "sol-builder.js",
-  "scripts": {"test": "nodejs test/all.js"},
+  "scripts": {
+    "test": "nodejs test/all.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/danielnovy/sol-builder.git"
+  },
   "dependencies": {
     "js-beautify": ">= 1.0.0"
   },
