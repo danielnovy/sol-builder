@@ -1,7 +1,7 @@
 {
   "name": "sol-builder",
   "description": "A solidity contract builder for Ethereum platform",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "sol-builder.js",
   "scripts": {
     "test": "nodejs test/all.js"
