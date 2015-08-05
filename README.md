@@ -6,6 +6,19 @@ This is particularly useful when you have to build a contract using parameters s
 
 After configuring your contract, you get the result code (beautified) using the function `getContract()`.
 
+# Install
+
+To install the module, just run
+```
+sudo npm install sol-builder -g
+```
+
+# Testing
+To test this code, run:
+```
+npm test
+```
+
 # Creating a contract
 
 To create a simple contract, all you have to do is set its name. Optionally, you can specify a parent contract like the example below. 
@@ -40,7 +53,7 @@ You can add attributes to your contract by using the function `addAttribyte` spe
 
 The code below illustrates the use of the `addAttribute` function.
 
-```
+```javascript
 builder.addAttribute({
     name: 'attr1',
     type: 'bytes32',
@@ -218,19 +231,6 @@ contract MyContract is ParentContract {
 # Changing and removing a function
 
 Guess what?
-
-# Install
-
-To install the module, just run
-```
-sudo npm install sol-builder -g
-```
-
-# Testing
-To test this code, run:
-```
-npm test
-```
 
 ## Usage example
 
