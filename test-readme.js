@@ -20,7 +20,7 @@ builder.addStruct({
         {
             name: 'myNumber',
             type: 'uint32',
-            comment: 'Simple comment', /* optional */
+            comment: 'Simple comment aldkfajsfl kjf kdjsf lkjsf lkjf akdjsf akjlf adksjlf akdsjfl askdflja kdsfjakjfkdjfkdjfdj kls', /* optional */
             lineBreak: false           /* optional */
         },
         {

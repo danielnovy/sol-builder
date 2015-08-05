@@ -4,10 +4,17 @@ var SolBuilder = (function() {
 
     var types = {
         ATTRIBUTE: 'attribute',
-        STRUCT: 'struct',
-        MAPPING: 'mapping',
-        FUNCTION: 'function'
+        STRUCT:    'struct'   ,
+        MAPPING:   'mapping'  ,
+        FUNCTION:  'function'
     }
+
+    var properties = {};
+    var common                  = ['name', 'comment', 'lineBreak'];
+    properties[types.ATTRIBUTE] = ['type', 'modifier', 'value'].concat(common);
+    properties[types.STRUCT]    = ['attributes'].concat(common);
+    properties[types.MAPPING]   = ['keyType', 'valueType', 'modifier'].concat(common);
+    properties[types.FUNCTION]  = ['parameters', 'returnType'].concat(common);
 
     var inherits = '';
     var name = 'Undefined';
@@ -94,6 +101,9 @@ var SolBuilder = (function() {
         if (item.modifier) {
             result += ' ' + item.modifier;
         }
+        if (item.returnType) {
+            result += ' returns (' + item.returnType + ')';
+        }
         result += ' {';
         result += item.body;
         result += '}';
@@ -111,6 +121,21 @@ var SolBuilder = (function() {
                 }
             }
             index++;
+        }
+    }
+
+    function _change(_type, _tochange) {
+        // TODO: create a index of names to optimize.
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].itemType == _type && items[i].name == _tochange.name) {
+                for (var j = 0; j < properties[_type].length; j++) {
+                    var property = properties[_type][j];
+                    if (_tochange.hasOwnProperty(property)) {
+                        items[i][property] = _tochange[property];
+                    }
+                }
+                return;
+            }
         }
     }
         
@@ -140,16 +165,8 @@ var SolBuilder = (function() {
             });
         },
 
-        setAttributeValue: function(_name, _value) {
-            // TODO: create names index to optimize?
-            for (var i = 0; i < items.length; i++) {
-                if (items[i].itemType == types.ATTRIBUTE) {
-                    if (items[i].name == _name) {
-                        items[i].value = _value;
-                        return;
-                    }
-                }
-            }
+        changeAttribute: function(_tochange) {
+            _change(types.ATTRIBUTE, _tochange);
         },
 
         removeAttribute: function(_name) {
@@ -168,6 +185,10 @@ var SolBuilder = (function() {
             });
         },
 
+        changeMapping: function(_tochange) {
+            _change(types.MAPPING, _tochange);
+        },
+
         removeMapping: function(_name) {
             _remove(_name, types.MAPPING);
         },
@@ -182,6 +203,10 @@ var SolBuilder = (function() {
             });
         },
 
+        changeStruct: function(_tochange) {
+            _change(types.STRUCT, _tochange);
+        },
+
         removeStruct: function(_name) {
             _remove(_name, types.STRUCT);
         },
@@ -191,10 +216,15 @@ var SolBuilder = (function() {
                 itemType: types.FUNCTION,
                 name: func.name,
                 parameters: func.parameters,
+                returnType: func.returnType,
                 body: func.body,
                 comment: func.comment,
                 lineBreak: func.lineBreak
             });
+        },
+
+        changeFunction: function(_tochange) {
+            _change(types.FUNCTION, _tochange);
         },
 
         removeFunction: function(_name) {
