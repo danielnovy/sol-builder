@@ -253,7 +253,7 @@ contract MyContract is ParentContract {
 
 Guess what?
 
-## Usage example
+# A complete example
 
 ```javascript
 var builder = require('sol-builder');
