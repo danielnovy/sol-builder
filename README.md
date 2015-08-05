@@ -56,10 +56,10 @@ The code below illustrates the use of the `addAttribute` function.
 ```javascript
 builder.addAttribute({
     name: 'attr1',
-    type: 'bytes32',
+    type: 'uint',
     modifier: 'public',
     comment: 'Just a simple comment',
-    value: '”testing”'
+    value: '123'
 });
 ```
 
@@ -68,7 +68,7 @@ Assuming the code below is inserted into the previous example shown, the result 
 ```javascript
 contract MyContract is ParentContract {
 
-    address public attr1 = “testing”;
+    uint public attr1 = 123;
 }
 ```
 
@@ -79,7 +79,7 @@ You can change any property of an attribute by using the function `changeAttribu
 ```javascript
 builder.changeAttribute({
     name: 'attr1',
-    value: '”changed”'
+    value: '999'
 });
 ```
 
@@ -88,7 +88,7 @@ will result:
 ```javascript
 contract MyContract is ParentContract {
 
-    address public attr1 = “changed”;
+    uint public attr1 = 999;
 }
 ````
 
