@@ -10,7 +10,7 @@ After configuring your contract, you get the result code (beautified) using the 
 
 To create a simple contract, all you have to do is set its name. Optionally, you can specify a parent contract like the example below. 
 
-```
+```javascript
 var builder = require('sol-builder');
 
 builder.setName('MyContract');
