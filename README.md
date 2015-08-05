@@ -90,7 +90,28 @@ contract MyContract is ParentContract {
 
     uint public attr1 = 999;
 }
-````
+```
+
+Another example, changing more than one property:
+
+```javascript
+builder.changeAttribute({
+    name: 'attr1',
+    value: '999',
+    comment: 'Just a test comment',
+    modifier: undefined
+});
+```
+
+Result:
+
+```javascript
+contract MyContract is ParentContract {
+
+    // Just a test comment
+    uint attr1 = 999;
+}
+```
 
 # Removing an attribute
 
