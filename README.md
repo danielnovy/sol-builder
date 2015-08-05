@@ -1,6 +1,6 @@
 ﻿# Solidity Contract Builder
 
-Simple module for building solidity contracts for the Ethereum platform using javascript.
+Simple module for building solidity contracts for the Ethereum platform using javascript. 
 
 This is particularly useful when you have to build a contract using parameters specified by your end user. Using sol-builder you can add/remove attributes, change types, change function signatures, etc, without having to manipulate directly the string representing the contract.
 
@@ -251,7 +251,50 @@ contract MyContract is ParentContract {
 
 # Changing and removing a function
 
-Guess what?
+The same logic for contract attributes applies here: use the functions `removeFunction(name)` and `changeFunction(obj)`.
+
+# Placeholders
+
+You can also add some placeholders in your code for later substitution. For instance, you may want to change just a tiny part of a function body instead of replace it all. Using the previous example code, you can set the property `body` to something like `some code1;UI_PLACEHOLDER_1;some code3;`. Then you can use:
+
+```javascript
+builder.addReplacement('UI_PLACEHOLDER_1', '');
+```
+
+which would yield the result:
+
+```javascript
+contract MyContract is ParentContract {
+
+    // Sample function
+    function (address param1, bytes32 param2) returns(bytes32) {
+        some code1;
+        some code3;
+    }
+}
+```
+
+or 
+
+```javascript
+builder.addReplacement('UI_PLACEHOLDER_1', 'some code 2.1; some code2.2;');
+```
+
+which would yield the result:
+```javascript
+contract MyContract is ParentContract {
+
+    // Sample function
+    function (address param1, bytes32 param2) returns(bytes32) {
+        some code1;
+        some code 2.1;
+        some code 2.2;
+        some code3;
+    }
+}
+```
+
+
 
 # A complete example
 
