@@ -119,6 +119,7 @@ will produce:
 ```javascript
 contract MyContract is ParentContract {
 
+    // Just a test...
     struct MyStruct {
         // struct attr1
         address attr1;
@@ -197,6 +198,7 @@ builder.addFunction({
     returnType: 'bytes32',
     body: 'some code1; some code2; some code3'
 });
+```
 
 Result:
 
@@ -232,7 +234,7 @@ npm test
 
 ## Usage example
 
-```
+```javascript
 var builder = require('sol-builder');
 
 builder.setName('MyContract');
@@ -293,7 +295,7 @@ console.log(builder.getContract());
 
 The code above would produce the following output:
 
-```
+```javascript
 contract MyContract is ParentContract {
 
     // Just a test attribute...
